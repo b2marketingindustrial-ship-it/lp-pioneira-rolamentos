@@ -34,10 +34,10 @@ const reasons = [
 ---
 
 <section id="diferenciais" class="bg-neutral-light py-24">
-  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+  <div class="mx-auto max-w-page px-6 lg:px-10">
     <div class="max-w-2xl">
       <Eyebrow>Por que a Pioneira</Eyebrow>
-      <h2 class="mt-4 font-display text-3xl font-semibold uppercase text-ink sm:text-4xl">
+      <h2 class="mt-4 font-display text-3xl font-extrabold text-ink sm:text-4xl">
         Mais do que encontrar um rolamento
       </h2>
     </div>
@@ -45,7 +45,7 @@ const reasons = [
     <div class="mt-12 border-t border-neutral-gray-200">
       {reasons.map((reason, i) => (
         <div class="grid grid-cols-[3rem_1fr] items-start gap-6 border-b border-neutral-gray-200 py-8 sm:grid-cols-[5rem_2.5rem_1fr] sm:items-center sm:gap-8">
-          <span class="font-display text-3xl font-semibold text-neutral-gray-200 sm:text-4xl">
+          <span class="font-display text-3xl font-bold text-neutral-gray-200 sm:text-4xl">
             {String(i + 1).padStart(2, '0')}
           </span>
 
@@ -54,7 +54,7 @@ const reasons = [
           </span>
 
           <div>
-            <h3 class="font-display text-lg font-semibold text-ink">{reason.title}</h3>
+            <h3 class="font-display text-lg font-bold text-ink">{reason.title}</h3>
             <p class="mt-1.5 max-w-xl font-sans text-sm leading-relaxed text-ink-soft">
               {reason.description}
             </p>

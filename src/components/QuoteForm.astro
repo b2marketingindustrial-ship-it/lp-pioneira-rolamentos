@@ -1,112 +1,80 @@
 ---
 import Icon from './Icon.astro'
 import Eyebrow from './Eyebrow.astro'
-import Field from './Field.astro'
-import Button from './Button.astro'
-
-const necessidades = [
-  'Comprar / cotar rolamento',
-  'Identificar rolamento',
-  'Substituir referência existente',
-  'Consultar aplicação',
-  'Outro',
-]
-
-const tipos = ['Não sei informar', 'Esferas', 'Rolos', 'Axial', 'Agulhas', 'Outro']
-
-const marcas = ['SKF', 'FAG', 'NSK', 'Timken', 'Outra', 'Não sei informar']
+import { whatsapp } from '../data/site'
 
 const trust = [
-  { icon: 'clock', label: 'Atendimento especializado' },
-  { icon: 'zap', label: 'Resposta rápida' },
-  { icon: 'map-pin', label: 'Suporte em todo o Brasil' },
+  { icon: 'clock', label: 'Resposta rápida' },
+  { icon: 'shield', label: 'Apoio técnico especializado' },
+  { icon: 'map-pin', label: 'Atendimento em todo o Brasil' },
 ] as const
+
+const whatsappHref = whatsapp
+  ? `https://wa.me/${whatsapp}?text=${encodeURIComponent('Olá! Gostaria de solicitar uma cotação de rolamentos.')}`
+  : ''
 ---
 
-<section id="cotacao" class="bg-neutral-light py-24">
-  <div class="mx-auto max-w-7xl px-6 lg:px-10">
-    <div class="grid gap-px overflow-hidden border border-neutral-gray-200 bg-neutral-gray-200 lg:grid-cols-[340px_1fr]">
-      <div class="navy-premium flex flex-col justify-between p-9 lg:p-10">
-        <div>
-          <Eyebrow tone="light">Cotação</Eyebrow>
-          <h2 class="mt-4 font-display text-2xl font-semibold uppercase leading-tight text-neutral-light">
-            Solicite sua cotação de rolamentos
-          </h2>
-          <p class="mt-4 font-sans text-sm leading-relaxed text-neutral-light/65">
-            Informe os dados disponíveis sobre sua necessidade. Quanto mais informações técnicas
-            forem enviadas, mais direcionado poderá ser o atendimento.
-          </p>
+<section id="cotacao" class="bg-neutral-gray-100 pt-8 pb-20">
+  <div class="mx-auto max-w-page px-6 lg:px-10">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+      {/* Espaço reservado ao shortcode do formulário */}
+      <div class="order-2 w-full lg:order-1">
+        <slot name="shortcode">
+          <div class="flex min-h-[520px] w-full flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-primary-dark/25 bg-neutral-light p-8 text-center shadow-[0_14px_32px_-26px_rgba(0,24,48,0.5)]">
+            <span class="font-sans text-[11px] font-semibold tracking-[0.18em] text-accent-orange uppercase">
+              Espaço reservado
+            </span>
+            <p class="font-display text-lg font-bold text-ink">Shortcode — formulário de cotação</p>
+            <p class="max-w-xs font-sans text-sm leading-relaxed text-ink-soft">
+              Insira o conteúdo no slot <code class="font-mono text-ink">shortcode</code>
+              do componente QuoteForm.
+            </p>
+          </div>
+        </slot>
+      </div>
+
+      {/* Texto de contato */}
+      <div class="order-1 lg:order-2">
+        <Eyebrow>Solicite sua cotação</Eyebrow>
+
+        <h2 class="mt-3 font-display text-3xl leading-tight font-extrabold text-ink sm:text-4xl">
+          Fale com quem entende de rolamentos industriais.
+        </h2>
+
+        <span aria-hidden="true" class="mt-5 block h-[3px] w-16 bg-accent-orange"></span>
+
+        <p class="mt-5 font-sans text-[15px] leading-relaxed text-ink-soft sm:text-base">
+          Nossa equipe está pronta para identificar, especificar e cotar o rolamento certo para a
+          sua aplicação. Preencha o formulário ou fale direto conosco pelo WhatsApp.
+        </p>
+
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          {whatsappHref ? (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 bg-primary-dark px-6 py-3.5 font-sans text-[15px] font-semibold text-neutral-light transition-colors duration-200 hover:bg-primary-dark-800"
+            >
+              <Icon name="whatsapp" class="size-4 shrink-0" />
+              Chamar no WhatsApp
+            </a>
+          ) : (
+            <span class="inline-flex items-center gap-2.5 bg-primary-dark px-6 py-3.5 font-sans text-[15px] font-semibold text-neutral-light/70">
+              <Icon name="whatsapp" class="size-4 shrink-0" />
+              WhatsApp em breve
+            </span>
+          )}
         </div>
 
-        <ul class="mt-10 flex flex-col gap-4 border-t border-neutral-light/15 pt-8">
+        <ul class="mt-7 flex flex-wrap gap-x-6 gap-y-2.5">
           {trust.map((item) => (
-            <li class="flex items-center gap-3 font-sans text-sm text-neutral-light/80">
+            <li class="flex items-center gap-2 font-sans text-[13px] font-medium text-ink">
               <Icon name={item.icon} class="size-4 shrink-0 text-accent-orange" />
               {item.label}
             </li>
           ))}
         </ul>
-      </div>
-
-      <div class="bg-neutral-light p-9 lg:p-10">
-        <form class="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
-          <Field label="Empresa" name="empresa" required placeholder="Nome da sua empresa" />
-          <Field label="Nome" name="nome" required placeholder="Seu nome" />
-
-          <Field label="Cargo / Área" name="cargo" placeholder="Ex.: Manutenção, Compras" />
-          <Field
-            label="Telefone / WhatsApp"
-            name="telefone"
-            type="tel"
-            required
-            placeholder="(11) 99999-9999"
-          />
-
-          <Field
-            label="E-mail corporativo"
-            name="email"
-            type="email"
-            required
-            placeholder="seu@empresa.com.br"
-          />
-          <Field label="Cidade / Estado" name="cidade" required placeholder="Ex.: São Paulo - SP" />
-
-          <Field
-            label="Qual sua necessidade?"
-            name="necessidade"
-            type="select"
-            required
-            options={necessidades}
-            span="full"
-          />
-
-          <Field label="Tipo de rolamento" name="tipo" type="select" options={tipos} />
-          <Field label="Marca" name="marca" type="select" options={marcas} />
-
-          <Field label="Referência / Código" name="referencia" placeholder="Ex.: 6205" />
-          <Field
-            label="Equipamento / Aplicação"
-            name="equipamento"
-            placeholder="Ex.: Motor elétrico"
-          />
-
-          <Field
-            label="Mensagem"
-            name="mensagem"
-            type="textarea"
-            placeholder="Descreva sua necessidade, se souber mais detalhes."
-            span="full"
-          />
-
-          <div class="flex flex-col gap-3 sm:col-span-2">
-            <Button type="submit" variant="primary" class="w-full sm:w-auto">
-              Solicitar cotação
-            </Button>
-            <p class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-soft">
-              Atendimento destinado a empresas e aplicações industriais.
-            </p>
-          </div>
-        </form>
       </div>
     </div>
   </div>

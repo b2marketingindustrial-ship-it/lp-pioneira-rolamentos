@@ -37,7 +37,7 @@ const isInput = (t: Props['type']): t is 'text' | 'email' | 'tel' | 'number' =>
 <div class={span === 'full' ? 'sm:col-span-2' : ''}>
   <label
     for={name}
-    class="block font-mono text-[11px] font-medium uppercase tracking-[0.1em] text-ink-soft"
+    class="block font-sans text-[11px] font-medium uppercase tracking-[0.1em] text-ink-soft"
   >
     {label} {required && <span class="text-accent-orange">*</span>}
   </label>
@@ -82,7 +82,7 @@ const isInput = (t: Props['type']): t is 'text' | 'email' | 'tel' | 'number' =>
       <span class="font-sans text-xs text-ink-soft">
         Clique para anexar ou arraste um arquivo aqui
       </span>
-      <span class="font-mono text-[10px] uppercase tracking-wide text-neutral-gray-200">
+      <span class="font-sans text-[10px] uppercase tracking-wide text-neutral-gray-200">
         PDF, JPG, PNG · máx. 10MB
       </span>
       <input id={name} name={name} type="file" class="sr-only" />
