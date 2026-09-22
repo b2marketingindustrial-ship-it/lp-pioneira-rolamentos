@@ -67,9 +67,9 @@ const applications: readonly Application[] = [
     <ul class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
       {applications.map((app) => (
         <li>
-          <a
-            href="#cotacao"
-            class="app-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-gray-200/70 bg-neutral-light shadow-[0_1px_2px_rgba(13,29,48,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1.5 hover:border-accent-orange/50 hover:shadow-[0_28px_56px_-28px_rgba(0,33,71,0.35)]"
+          <button
+            type="button"
+            class="btn-slave-whats app-card group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-neutral-gray-200/70 bg-neutral-light text-left shadow-[0_1px_2px_rgba(13,29,48,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-1.5 hover:border-accent-orange/50 hover:shadow-[0_28px_56px_-28px_rgba(0,33,71,0.35)]"
           >
             {/* Linha de acento no topo — cresce no hover */}
             <span
@@ -115,7 +115,7 @@ const applications: readonly Application[] = [
                 <Icon name="arrow-right" class="size-3.5" />
               </span>
             </div>
-          </a>
+          </button>
         </li>
       ))}
     </ul>

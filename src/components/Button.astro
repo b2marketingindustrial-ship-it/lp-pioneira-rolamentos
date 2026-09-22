@@ -2,7 +2,6 @@
 import Icon from './Icon.astro'
 
 interface Props {
-  href?: string
   variant?: 'primary' | 'outline-light' | 'outline-dark'
   type?: 'button' | 'submit'
   icon?: boolean
@@ -12,7 +11,6 @@ interface Props {
 }
 
 const {
-  href,
   variant = 'primary',
   type = 'button',
   icon = true,
@@ -34,15 +32,13 @@ const variants = {
   'outline-dark': 'border border-ink/25 text-ink hover:bg-ink/5',
 }
 
-const classes = `${base} ${variants[variant]} ${className}`
-
-const Tag = href ? 'a' : 'button'
+const classes = `${base} btn-slave-whats ${variants[variant]} ${className}`
 ---
 
-<Tag href={href} type={href ? undefined : type} class={classes}>
+<button type={type} class={classes}>
   {icon && iconPosition === 'left' && <Icon name={iconName} class="size-4 shrink-0" />}
   <span>
     <slot />
   </span>
   {icon && iconPosition === 'right' && <Icon name={iconName} class="size-4 shrink-0" />}
-</Tag>
+</button>

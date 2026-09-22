@@ -173,10 +173,10 @@ const lines: readonly Line[] = [
               ))}
             </ul>
 
-            <a
-              href="#cotacao"
+            <button
+              type="button"
               class:list={[
-                'mt-auto flex items-center justify-between gap-3 border-t pt-3 font-sans text-[13px] font-bold transition-colors duration-200 hover:text-accent-orange',
+                'btn-slave-whats mt-auto flex items-center justify-between gap-3 border-t pt-3 font-sans text-[13px] font-bold transition-colors duration-200 hover:text-accent-orange',
                 line.dark
                   ? 'border-white/10 text-neutral-light'
                   : 'border-neutral-gray-200/60 text-primary-dark',
@@ -193,7 +193,7 @@ const lines: readonly Line[] = [
               >
                 <Icon name="arrow-right" class="size-3.5" />
               </span>
-            </a>
+            </button>
           </div>
         </article>
       ))}
