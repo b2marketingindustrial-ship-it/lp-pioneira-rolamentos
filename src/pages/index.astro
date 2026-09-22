@@ -18,13 +18,17 @@ import Footer from '../components/Footer.astro'
   <Header />
 
   <main id="main">
-    <Hero />
+    <Hero>
+      <Fragment slot="shortcode">[atendimento_chat id="default"]</Fragment>
+    </Hero>
     <ProductLines />
     <IdentifyBearing />
     <ApplicationsGallery />
     <SegmentsShowcase />
     <WhyPioneira />
-    <QuoteForm />
+    <QuoteForm>
+      <Fragment slot="shortcode">[atendimento_form id="default-form"]</Fragment>
+    </QuoteForm>
   </main>
 
   <Footer />
