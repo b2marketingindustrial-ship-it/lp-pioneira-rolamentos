@@ -5,7 +5,7 @@ export const site = {
   address: 'Rua Barão de Parnaíba, 191 - Centro, Campinas - SP, 13013-170',
   title: 'Rolamentos Industriais para Manutenção e Reposição | Pioneira Rolamentos',
   description:
-    'Solicite cotação de rolamentos de esferas, rolos e aplicações especiais SKF, FAG, NSK e Timken. Apoio técnico na identificação e especificação para manutenção industrial.',
+    'Rolamentos industriais para manutenção e reposição. Envie código, foto ou medidas: a Pioneira ajuda a identificar, encontrar e especificar o rolamento, com SKF, FAG, NSK, Timken e outras marcas.',
 }
 
 /** Número do WhatsApp comercial no formato internacional, só dígitos (ex.: 5511999999999). Vazio desativa o botão. */

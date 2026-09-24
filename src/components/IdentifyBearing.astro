@@ -4,75 +4,63 @@ import Button from './Button.astro'
 import Eyebrow from './Eyebrow.astro'
 
 const items = [
-  { icon: 'barcode', label: 'Referência', hint: 'ou código gravado' },
-  { icon: 'tag', label: 'Marca', hint: 'do fabricante' },
-  { icon: 'camera', label: 'Foto', hint: 'do rolamento' },
-  { icon: 'ruler', label: 'Medidas', hint: 'diâmetro e largura' },
+  { icon: 'barcode', label: 'Código', hint: 'ou referência parcial' },
+  { icon: 'tag', label: 'Fabricante', hint: 'marca da peça' },
+  { icon: 'camera', label: 'Foto', hint: 'da peça ou gravação' },
+  { icon: 'ruler', label: 'Medidas', hint: 'diâmetros e largura' },
   { icon: 'factory', label: 'Equipamento', hint: 'onde é aplicado' },
   { icon: 'target', label: 'Aplicação', hint: 'carga e rotação' },
 ] as const
 ---
 
-<section id="identificar" class="bg-neutral-light pt-6 pb-16">
+<section id="identificar" class="bg-neutral-gray-100 py-16 lg:py-20">
   <div class="mx-auto max-w-page px-6 lg:px-10">
-    <div class="identify-panel navy-premium relative overflow-hidden rounded-2xl border border-white/12 p-6 shadow-[0_14px_32px_-26px_rgba(0,24,48,0.5)] sm:p-8 lg:px-10 lg:py-9">
-      {/* Textura técnica: malha de blueprint esmaecida nas bordas */}
-      <span aria-hidden="true" class="identify-grid pointer-events-none absolute inset-0"></span>
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-stretch lg:gap-16">
+      {/* Coluna 1 — textos e CTA, centralizados na altura dos cards */}
+      <div class="flex max-w-xl flex-col lg:justify-center">
+        <div>
+          <Eyebrow>Identificação e localização</Eyebrow>
 
-      {/* Brilho laranja no canto superior direito */}
-      <span
-        aria-hidden="true"
-        class="pointer-events-none absolute -top-24 -right-20 size-72 rounded-full bg-accent-orange/15 blur-3xl"
-      ></span>
+          <h2 class="mt-3 font-display text-[2.1rem] leading-[1.1] font-extrabold text-ink sm:text-[2.5rem]">
+            Precisa identificar ou encontrar um rolamento?
+          </h2>
 
-      <div class="relative">
-        {/* Linha superior — título à esquerda, CTA à direita */}
-        <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-          <div class="max-w-2xl">
-            <Eyebrow tone="light">Apoio na identificação</Eyebrow>
+          <span aria-hidden="true" class="mt-5 block h-[3px] w-16 bg-accent-orange"></span>
 
-            <h2 class="mt-3 font-display text-3xl leading-tight font-extrabold text-neutral-light sm:text-4xl">
-              Precisa identificar um rolamento?
-            </h2>
-
-            <p class="mt-3 font-sans text-[15px] leading-relaxed text-neutral-light/70">
-              Não precisa ter todos os dados em mãos.
-              <br class="hidden sm:block" />
-              Envie o que você tiver e nossa equipe identifica o modelo correto para a sua
-              aplicação.
-            </p>
-          </div>
-
-          <div class="flex flex-col items-stretch gap-2.5 lg:shrink-0 lg:items-end">
-            <Button
-              variant="primary"
-              class="w-full shadow-[0_14px_30px_-12px_rgba(255,107,0,0.85)] lg:w-auto"
-            >
-              Identifique seu rolamento
-            </Button>
-
-            <span class="flex items-center justify-center gap-2 font-sans text-xs text-neutral-light/60 lg:justify-end">
-              <Icon name="shield" class="size-3.5 shrink-0 text-accent-orange" />
-              Retorno com apoio técnico especializado
-            </span>
-          </div>
+          <p class="mt-5 font-sans text-[15px] leading-relaxed text-ink-soft sm:text-base">
+            Você não precisa ter todas as informações em mãos. Envie o que tiver: nossa equipe ajuda
+            a identificar o modelo, encontrar a opção adequada e orientar a especificação para a sua
+            aplicação.
+          </p>
         </div>
 
-        {/* Faixa inferior — o que pode ser enviado, ocupando toda a largura */}
-        <ul class="identify-strip mt-7 grid grid-cols-2 overflow-hidden rounded-xl border border-white/12 sm:grid-cols-3 lg:grid-cols-6">
+        <div class="mt-7 flex flex-col items-stretch sm:items-start">
+          <Button variant="primary" class="w-full sm:w-auto">
+            Enviar dados do rolamento
+          </Button>
+        </div>
+      </div>
+
+      {/* Coluna 2 — o que pode ser enviado, em cards verticais */}
+      <div>
+        <ul class="grid gap-3 sm:grid-cols-2 lg:h-full lg:content-center">
           {items.map((item) => (
-            <li class="identify-item flex items-center gap-3 px-4 py-3.5 sm:px-5 lg:gap-2.5 lg:px-3.5">
-              <span class="identify-badge relative flex size-11 shrink-0 items-center justify-center rounded-full text-neutral-light">
+            <li class="identify-item group relative flex items-center gap-4 overflow-hidden rounded-xl border border-neutral-gray-200/70 bg-neutral-light px-4 py-4 shadow-[0_1px_2px_rgba(13,29,48,0.05)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:-translate-y-0.5 hover:border-accent-orange/50 hover:shadow-[0_18px_36px_-24px_rgba(0,33,71,0.35)]">
+              {/* Barra lateral laranja que cresce no hover */}
+              <span
+                aria-hidden="true"
+                class="absolute inset-y-0 left-0 w-[3px] origin-bottom scale-y-0 bg-accent-orange transition-transform duration-300 ease-out group-hover:scale-y-100"
+              ></span>
+
+              <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary-dark text-neutral-light transition-colors duration-300 group-hover:bg-accent-orange">
                 <Icon name={item.icon} class="size-[18px]" />
               </span>
 
-              <span class="flex min-w-0 flex-col gap-0.5">
-                <span class="font-sans text-[13px] leading-none font-bold text-neutral-light">
+              <span class="flex min-w-0 flex-1 flex-col gap-0.5">
+                <span class="font-display text-[15px] leading-none font-extrabold text-ink">
                   {item.label}
                 </span>
-                <span class="font-sans text-[11px] leading-snug text-neutral-light/55">
-                  {item.hint}
-                </span>
+                <span class="font-sans text-[13px] leading-snug text-ink-soft">{item.hint}</span>
               </span>
             </li>
           ))}
@@ -83,152 +71,13 @@ const items = [
 </section>
 
 <style>
-  /* Malha de blueprint, mais densa que a do hero e esmaecida nas bordas */
-  .identify-grid {
-    background-image:
-      linear-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(255 255 255 / 0.05) 1px, transparent 1px);
-    background-size: 34px 34px;
-    mask-image: radial-gradient(ellipse at 20% 0%, black 0%, transparent 78%);
-    -webkit-mask-image: radial-gradient(ellipse at 20% 0%, black 0%, transparent 78%);
-  }
-
-  /* Faixa de itens: fundo de vidro e divisórias entre células */
-  .identify-strip {
-    background-color: rgb(255 255 255 / 0.04);
-  }
-
-  .identify-item {
-    border-right: 1px solid rgb(255 255 255 / 0.1);
-    border-bottom: 1px solid rgb(255 255 255 / 0.1);
-    transition: background-color 260ms ease;
-  }
-
-  .identify-item:hover {
-    background-color: rgb(255 255 255 / 0.05);
-  }
-
-  /* Remove a divisória da última coluna / última linha em cada breakpoint */
-  .identify-item:nth-child(2n) {
-    border-right: 0;
-  }
-
-  .identify-item:nth-last-child(-n + 2) {
-    border-bottom: 0;
-  }
-
-  @media (width >= 40rem) {
-    .identify-item:nth-child(2n) {
-      border-right: 1px solid rgb(255 255 255 / 0.1);
-    }
-
-    .identify-item:nth-child(3n) {
-      border-right: 0;
-    }
-
-    .identify-item:nth-last-child(-n + 3) {
-      border-bottom: 0;
-    }
-  }
-
-  @media (width >= 64rem) {
-    .identify-item {
-      border-bottom: 0;
-    }
-
-    .identify-item:nth-child(3n) {
-      border-right: 1px solid rgb(255 255 255 / 0.1);
-    }
-
-    .identify-item:last-child {
-      border-right: 0;
-    }
-  }
-
-  /* Cantos técnicos em laranja */
-  .identify-panel::before,
-  .identify-panel::after {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border-color: var(--color-accent-orange);
-    border-style: solid;
-    border-width: 0;
-    opacity: 0.9;
-    pointer-events: none;
-  }
-
-  .identify-panel::before {
-    top: 14px;
-    left: 14px;
-    border-top-width: 2px;
-    border-left-width: 2px;
-  }
-
-  .identify-panel::after {
-    right: 14px;
-    bottom: 14px;
-    border-bottom-width: 2px;
-    border-right-width: 2px;
-  }
-
-  /* Badge de vidro com brilho interno */
-  .identify-badge {
-    background-image: linear-gradient(
-      160deg,
-      rgb(255 255 255 / 0.16) 0%,
-      rgb(255 255 255 / 0.04) 100%
-    );
-    border: 1px solid rgb(255 255 255 / 0.16);
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.22),
-      inset 0 -10px 14px -10px rgb(255 107 0 / 0.45),
-      0 12px 22px -14px rgb(0 0 0 / 0.85);
-    transition:
-      transform 260ms ease,
-      border-color 260ms ease,
-      background-image 260ms ease,
-      box-shadow 260ms ease;
-  }
-
-  /* Anel laranja que surge no hover */
-  .identify-badge::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 9999px;
-    border: 1px solid rgb(255 107 0 / 0.55);
-    opacity: 0;
-    transform: scale(0.88);
-    transition:
-      opacity 260ms ease,
-      transform 260ms ease;
-    pointer-events: none;
-  }
-
-  .identify-item:hover .identify-badge {
-    transform: translateY(-2px);
-    border-color: rgb(255 107 0 / 0.6);
-    background-image: linear-gradient(160deg, rgb(255 107 0 / 0.3) 0%, rgb(255 107 0 / 0.08) 100%);
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.28),
-      0 16px 26px -14px rgb(0 0 0 / 0.9);
-  }
-
-  .identify-item:hover .identify-badge::after {
-    opacity: 1;
-    transform: scale(1);
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .identify-item,
-    .identify-badge,
-    .identify-badge::after {
-      transition: none;
+    .identify-item * {
+      transition: none !important;
     }
 
-    .identify-item:hover .identify-badge {
+    .identify-item:hover {
       transform: none;
     }
   }

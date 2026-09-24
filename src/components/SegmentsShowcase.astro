@@ -124,11 +124,15 @@ const segments: readonly Segment[] = [
   {
     id: 'outras',
     icon: 'more-horizontal',
-    label: 'Outras Aplicações Industriais',
-    title: 'Outras Aplicações Industriais',
+    label: 'Outros Segmentos',
+    title: 'Outros Segmentos',
     description:
-      'Não encontrou o seu segmento? Atendemos diferentes processos industriais com apoio técnico na identificação e especificação do rolamento.',
-    bullets: ['Apoio na identificação', 'Múltiplas marcas e soluções', 'Atendimento B2B'],
+      'Não encontrou o seu setor? Atendemos outros processos industriais: o ponto de partida é o equipamento e a condição de operação.',
+    bullets: [
+      'Máquinas e equipamentos industriais',
+      'Manutenção corretiva e preventiva',
+      'Reposição de sobressalentes',
+    ],
     photo: outrasPhoto,
     alt: 'Planta industrial com diferentes equipamentos e aplicações',
   },
@@ -142,10 +146,11 @@ const first = segments[0].id
     <div class="max-w-2xl">
       <Eyebrow>Segmentos atendidos</Eyebrow>
       <h2 class="mt-3 font-display text-3xl leading-tight font-extrabold text-ink sm:text-4xl">
-        Soluções para manutenção industrial
+        Da mineração à indústria alimentícia
       </h2>
-      <p class="mt-3 font-sans text-[15px] leading-relaxed text-ink-soft">
-        Rolamentos e apoio técnico para diferentes processos produtivos.
+      <p class="mt-3 font-sans text-[15px] leading-relaxed text-ink-soft lg:max-w-none lg:whitespace-nowrap">
+        Cada setor submete os rolamentos a condições próprias: umidade, poeira abrasiva, calor,
+        impacto ou operação contínua.
       </p>
     </div>
 

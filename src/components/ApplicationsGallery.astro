@@ -7,6 +7,7 @@ import motoresPhoto from '../assets/applications/motores.png'
 import bombasPhoto from '../assets/applications/bombas.png'
 import redutoresPhoto from '../assets/applications/redutores.png'
 import transportadoresPhoto from '../assets/applications/transportadores.png'
+import maquinasPhoto from '../assets/applications/maquinas.png'
 
 interface Application {
   index: string
@@ -20,30 +21,37 @@ const applications: readonly Application[] = [
   {
     index: '01',
     label: 'Motores Elétricos',
-    description: 'Rolamentos para aplicações em motores e conjuntos rotativos.',
+    description: 'Alta rotação e baixo ruído em motores e conjuntos rotativos.',
     photo: motoresPhoto,
     alt: 'Motor elétrico industrial',
   },
   {
     index: '02',
     label: 'Bombas',
-    description: 'Aplicações em bombas e sistemas industriais.',
+    description: 'Operação contínua em bombas centrífugas e de processo.',
     photo: bombasPhoto,
     alt: 'Bomba centrífuga industrial',
   },
   {
     index: '03',
     label: 'Redutores',
-    description: 'Rolamentos para sistemas de transmissão e redução.',
+    description: 'Cargas combinadas em redutores e sistemas de transmissão.',
     photo: redutoresPhoto,
     alt: 'Redutor de velocidade industrial',
   },
   {
     index: '04',
     label: 'Transportadores',
-    description: 'Aplicações em sistemas de movimentação e transporte industrial.',
+    description: 'Roletes, tambores e esteiras de movimentação de materiais.',
     photo: transportadoresPhoto,
     alt: 'Esteira transportadora de rolos',
+  },
+  {
+    index: '05',
+    label: 'Máquinas Industriais',
+    description: 'Equipamentos e linhas produtivas de diferentes processos.',
+    photo: maquinasPhoto,
+    alt: 'Máquina industrial em linha de produção',
   },
 ]
 ---
@@ -54,17 +62,17 @@ const applications: readonly Application[] = [
     <div class="mx-auto max-w-4xl text-center">
       <Eyebrow>Aplicações</Eyebrow>
       <h2 class="mt-3 font-display text-3xl leading-tight font-extrabold text-ink sm:text-4xl lg:whitespace-nowrap">
-        Rolamentos para diferentes aplicações industriais
+        Rolamentos para os equipamentos da sua planta
       </h2>
       <p class="mt-3 font-sans text-[15px] leading-relaxed text-ink-soft">
-        Componentes destinados à manutenção e reposição em máquinas e equipamentos
+        Cada equipamento impõe condições próprias de carga, rotação e montagem.{' '}
         <br class="hidden lg:block" />
-        utilizados em diferentes processos industriais.
+        Saber onde o rolamento trabalha faz parte da especificação correta.
       </p>
     </div>
 
     {/* Galeria de aplicações */}
-    <ul class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+    <ul class="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
       {applications.map((app) => (
         <li>
           <button
@@ -101,17 +109,17 @@ const applications: readonly Application[] = [
             </div>
 
             {/* Rótulo */}
-            <div class="flex flex-1 items-start justify-between gap-3 px-5 pt-4 pb-5">
+            <div class="flex flex-1 items-start justify-between gap-2.5 px-4 pt-4 pb-4 lg:px-4">
               <span class="flex min-w-0 flex-col gap-1.5">
-                <span class="font-display text-lg leading-snug font-extrabold text-ink">
+                <span class="font-display text-lg leading-snug font-extrabold text-ink lg:text-[16px] xl:text-[17px]">
                   {app.label}
                 </span>
-                <span class="font-sans text-[13px] leading-relaxed text-ink-soft">
+                <span class="font-sans text-[13px] leading-relaxed text-ink-soft lg:text-[12.5px]">
                   {app.description}
                 </span>
               </span>
 
-              <span class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-neutral-gray-100 text-primary-dark transition-[background-color,color,transform] duration-300 group-hover:translate-x-0.5 group-hover:bg-accent-orange group-hover:text-neutral-light">
+              <span class="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-neutral-gray-100 text-primary-dark transition-[background-color,color,transform] duration-300 group-hover:translate-x-0.5 group-hover:bg-accent-orange group-hover:text-neutral-light">
                 <Icon name="arrow-right" class="size-3.5" />
               </span>
             </div>
